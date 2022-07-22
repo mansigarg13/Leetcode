@@ -1,0 +1,11 @@
+class Solution:
+    def findTheDifference(self, s: str, t: str) -> str:
+        if s == "":
+            return t
+        elif t == "":
+            return s
+        l1 = list(s)
+        l2 = list(t)
+        for i in l1:
+            l2.remove(i)
+        return l2[0]
