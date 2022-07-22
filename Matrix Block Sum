@@ -1,0 +1,16 @@
+class Solution:
+    def matrixBlockSum(self, mat: List[List[int]], k: int) -> List[List[int]]:
+        rows, cols = len(mat) , len(mat[0])
+        ans = [[0 for _ in range(cols)] for _ in range(rows)]
+        
+        for i in range(rows):
+            for j in range(cols):
+                rowstart = max(0, i - k)
+                rowend = min(rows-1,i+k)
+                colstart = max(0,j-k)
+                colend = min(cols-1,j+k)
+                s=0
+                for r in range(rowstart,rowend+1):
+                    s+= sum(mat[r][colstart:colend+1])
+                ans[i][j] = s
+        return ans
